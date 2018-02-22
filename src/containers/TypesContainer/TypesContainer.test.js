@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTypes, addPokemon } from '../../actions';
 import TypesContainer from './index';
+import { mapStateToProps, mapDispatchToProps } from './index';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -22,21 +23,24 @@ describe('TypesContainer Tests', () => {
   beforeEach(() => {
     store = mockStore(initialState)
     wrapper = shallow(<TypesContainer store={ store }/>)
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({
+        typesToDispatch: typesReducerMock
+      })
+    }))
   })
 
   it('should match snapshot', () => {
     expect(wrapper.length).toEqual(1);
     expect(wrapper).toMatchSnapshot();
   })
+
+  it('addTypes should return correct object', () => {
+    expect(addTypes(typesReducerMock)).resolves.toEqual({"type": "ADD_TYPES", "typesToDispatch": [{"id": "1", "name": "normal", "pokemon": [undefined, undefined, undefined, undefined, undefined]}, {"id": "2", "name": "fighting", "pokemon": [undefined, undefined, undefined, undefined, undefined]}]})
+  })
+
+  it('addPokemon should return correct object', () => {
+    expect(addPokemon(pokemonReducerMock)).resolves.toEqual({"pokemonToDispatch": [{"id": "92", "name": "gastly", "sprites": "img", "type": "8", "weight": 1}, {"id": "93", "name": "haunter", "sprites": "img", "type": "8", "weight": 1}], "type": "ADD_POKEMON"})
+  })
 })
-
-
-// const store = createStore(mockStore)
-
-// window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-//   json: () => Promise.resolve({
-//     typesToDispatch: mocktypesToDispatch
-//   })
-// }))
-
-// let wrapper

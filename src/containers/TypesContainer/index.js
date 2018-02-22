@@ -22,10 +22,20 @@ export class TypesContainer extends Component {
   }
 
   async componentDidMount() {
-    const fetchedTypes = await fetch('http://localhost:3001/types');
-    const typesToDispatch = await fetchedTypes.json();
-    const fetchedPokemon = await fetch('http://localhost:3001/pokemon');
-    const pokemonToDispatch = await fetchedPokemon.json();
+    try {
+      const fetchedTypes = await fetch('http://localhost:3001/types');
+      const typesToDispatch = await fetchedTypes.json();
+    } catch(error) {
+      throw new Error(`fetchedTypes failed: ${error}`)
+    }
+    
+    try {
+      const fetchedPokemon = await fetch('http://localhost:3001/pokemon');
+      const pokemonToDispatch = await fetchedPokemon.json();
+    } catch(error) {
+      throw new Error(`fetchedPokemon failed: ${error}`)
+    }
+    
     this.props.addPokemon(pokemonToDispatch);
     this.props.addTypes(typesToDispatch);
     this.setState({ 
@@ -35,10 +45,8 @@ export class TypesContainer extends Component {
   }
   
   render(props) {
-    console.log('tp',this.props)
     const { storeTypes } = this.props
     const { pokemonCategory } = this.state
-    console.log(pokemonCategory)
     const renderPokemon = pokemonCategory.map( (poke, key) => <div className="pokeCategory" key={ poke.id } ><h6>{ poke.name }</h6><h6>{ poke.type }</h6><h6>{ poke.weight }</h6><img src={ poke.sprites.front_default} /></div>)
 
     const renderCards = storeTypes.map( (type, key) => <div id={ type.id } className="card" onClick={ (e) => this.handleClick(e) } key={ type.id } >{ type.name }<div>{ renderPokemon }</div></div>)
@@ -55,7 +63,10 @@ export class TypesContainer extends Component {
 }
 
 TypesContainer.propTypes = {
-  addTypes: PropTypes.func
+  addTypes: PropTypes.func,
+  addPokemon: PropTypes.func,
+  storePokemon: PropTypes.array,
+  storeTypes: PropTypes.array
 };
 
 export const mapStateToProps = (state) => ({
