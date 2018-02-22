@@ -20,6 +20,10 @@ class TypesContainer extends Component {
   }
 
   render(props) {
+    const { storeTypes } = this.props
+    console.log('storetypes',storeTypes)
+      const renderCards = storeTypes.map( (type, key) => console.log(type ))
+    
     return (
       <div>
         <button onClick={()=> {
