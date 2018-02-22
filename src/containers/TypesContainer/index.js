@@ -15,6 +15,7 @@ export class TypesContainer extends Component {
   }
 
   handleClick(e) {
+    console.log(e)
     const { storePokemon } = this.props
     e.target.className === "card" ? e.target.className = "active" : e.target.className = "card";
     const pokemonCategory = storePokemon.filter( pokemon => pokemon.type === e.target.id ? pokemon : null )
@@ -25,6 +26,10 @@ export class TypesContainer extends Component {
     try {
       const fetchedTypes = await fetch('http://localhost:3001/types');
       const typesToDispatch = await fetchedTypes.json();
+      this.props.addTypes(typesToDispatch);
+      this.setState({ 
+        types: typesToDispatch
+       })
     } catch(error) {
       throw new Error(`fetchedTypes failed: ${error}`)
     }
@@ -32,22 +37,20 @@ export class TypesContainer extends Component {
     try {
       const fetchedPokemon = await fetch('http://localhost:3001/pokemon');
       const pokemonToDispatch = await fetchedPokemon.json();
+      this.props.addPokemon(pokemonToDispatch);
+      this.setState({ 
+        pokemon: pokemonToDispatch
+       })
     } catch(error) {
       throw new Error(`fetchedPokemon failed: ${error}`)
     }
-    
-    this.props.addPokemon(pokemonToDispatch);
-    this.props.addTypes(typesToDispatch);
-    this.setState({ 
-      types: typesToDispatch,
-      pokemon: pokemonToDispatch
-     })
   }
   
   render(props) {
     const { storeTypes } = this.props
     const { pokemonCategory } = this.state
-    const renderPokemon = pokemonCategory.map( (poke, key) => <div className="pokeCategory" key={ poke.id } ><h6>{ poke.name }</h6><h6>{ poke.type }</h6><h6>{ poke.weight }</h6><img src={ poke.sprites.front_default} /></div>)
+
+    const renderPokemon = pokemonCategory.map( (poke, key) => <div className="pokeCategory" key={ poke.id } ><h6>Name: { poke.name }</h6><h6>Type: { poke.type }</h6><h6>Weight: { poke.weight }</h6><img src={ poke.sprites.front_default} /></div>)
 
     const renderCards = storeTypes.map( (type, key) => <div id={ type.id } className="card" onClick={ (e) => this.handleClick(e) } key={ type.id } >{ type.name }<div>{ renderPokemon }</div></div>)
     
