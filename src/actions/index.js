@@ -1,4 +1,4 @@
-export const addTypes = (types) => ({
+export const addTypes = (typesToDispatch) => ({
    type: 'ADD_TYPES',
-   types
+   typesToDispatch
 })
