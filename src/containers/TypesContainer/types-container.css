@@ -1,0 +1,25 @@
+.types-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #fefaf3
+}
+
+.card,
+.active {
+  border: 2px black solid;
+  margin: 10px;
+  height: 50px;
+  width: 300px;
+  text-overflow: hidden;
+}
+
+.active {
+  border: 2px black solid;
+  margin: 10px;
+  height: 300px;
+  width: 300px;  
+  transition: height .25s ease;
+}
