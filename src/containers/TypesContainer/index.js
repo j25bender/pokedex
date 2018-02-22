@@ -34,7 +34,6 @@ class TypesContainer extends Component {
      })
   }
   
-  //name, id, type, weight, sprites
   render(props) {
     const { storeTypes } = this.props
     const { pokemonCategory } = this.state
@@ -43,9 +42,11 @@ class TypesContainer extends Component {
 
     const renderCards = storeTypes.map( (type, key) => <div id={ type.id } className="card" onClick={ (e) => this.handleClick(e) } key={ type.id } >{ type.name }<div>{ renderPokemon }</div></div>)
     
+    const loading = !this.props ? <div className="loadScreen"></div> : null;
+
     return (
       <div className="types-container">
-        <div className="loadScreen"></div>
+        {loading} 
         {renderCards}
       </div>
     );
