@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TypesContainer Tests should match snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Connect(TypesContainer)
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "addPokemon": [Function],
+      "addTypes": [Function],
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+      "storePokemon": Array [
+        Object {
+          "id": "92",
+          "name": "gastly",
+          "sprites": "img",
+          "type": "8",
+          "weight": 1,
+        },
+        Object {
+          "id": "93",
+          "name": "haunter",
+          "sprites": "img",
+          "type": "8",
+          "weight": 1,
+        },
+      ],
+      "storeSubscription": Subscription {
+        "listeners": Object {
+          "clear": [Function],
+          "get": [Function],
+          "notify": [Function],
+          "subscribe": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "unsubscribe": [Function],
+      },
+      "storeTypes": Array [
+        Object {
+          "id": "1",
+          "name": "normal",
+          "pokemon": Array [
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ],
+        },
+        Object {
+          "id": "2",
+          "name": "fighting",
+          "pokemon": Array [
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ],
+        },
+      ],
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "addPokemon": [Function],
+        "addTypes": [Function],
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
+        "storePokemon": Array [
+          Object {
+            "id": "92",
+            "name": "gastly",
+            "sprites": "img",
+            "type": "8",
+            "weight": 1,
+          },
+          Object {
+            "id": "93",
+            "name": "haunter",
+            "sprites": "img",
+            "type": "8",
+            "weight": 1,
+          },
+        ],
+        "storeSubscription": Subscription {
+          "listeners": Object {
+            "clear": [Function],
+            "get": [Function],
+            "notify": [Function],
+            "subscribe": [Function],
+          },
+          "onStateChange": [Function],
+          "parentSub": undefined,
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
+          "unsubscribe": [Function],
+        },
+        "storeTypes": Array [
+          Object {
+            "id": "1",
+            "name": "normal",
+            "pokemon": Array [
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ],
+          },
+          Object {
+            "id": "2",
+            "name": "fighting",
+            "pokemon": Array [
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+            ],
+          },
+        ],
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

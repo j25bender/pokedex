@@ -35,6 +35,7 @@ export class TypesContainer extends Component {
   }
   
   render(props) {
+    console.log('tp',this.props)
     const { storeTypes } = this.props
     const { pokemonCategory } = this.state
     console.log(pokemonCategory)
