@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import FakeContainer from '../../containers/FakeContainer/'
+import TypesContainer from '../../containers/TypesContainer/'
 
 class App extends Component {
   constructor() {
@@ -18,11 +18,11 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className='App'>
         <h1 className='header'> POKéDEX </h1>
-        <TypesContainer />
+        <TypesContainer types={ this.state.types }/>
       </div>
     );
   }

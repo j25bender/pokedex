@@ -1,1 +1,4 @@
-export const fakeAction = () => ({ type: 'FAKE'})
+export const addTypes = (types) => ({
+   type: 'ADD_TYPES',
+   types
+})
