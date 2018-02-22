@@ -18,7 +18,6 @@ describe('action tests', () => {
       pokemonToDispatch: [ {name: "gastly", id: "92", type: "8", weight: 1, sprites: 'img'}, {name: "haunter", id: "93", type: "8", weight: 1, sprites: 'img'} ]
     }
     expect(addPokemon(mockpokemonToDispatch)).toEqual(expectedActions);
-    console.log(expectedActions)
   })
 
 })  

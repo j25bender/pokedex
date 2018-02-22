@@ -11,19 +11,21 @@ describe('reducer tests', () => {
     expect(pokemonReducer(undefined, {})).toEqual([])
   })
 
-  it('typesReducer should update state when action ', () => {
-    const typesAction = {
-      type: 'ADD_TYPES',
-      typesToDispatch: [ 'normal', 'fighting', 'flying' ]
-    }
-    expect(typesReducer(undefined, typesAction)).toEqual([typesAction])
-  })
-
   it('pokemonReducer should update state when action ', () => {
+    const mockPokemonToDispatch = [ {name: "gastly", id: "92", type: "8", weight: 1, sprites: 'img'}, {name: "haunter", id: "93", type: "8", weight: 1, sprites: 'img'} ]
     const pokemonAction = {
       type: 'ADD_POKEMON',
-      pokemonToDispatch: [ {name: "gastly", id: "92", type: "8", weight: 1, sprites: 'img'}, {name: "haunter", id: "93", type: "8", weight: 1, sprites: 'img'} ]
+      pokemonToDispatch: mockPokemonToDispatch
     }
-    expect(pokemonReducer(undefined, pokemonAction)).toEqual([pokemonAction])
+    expect(pokemonReducer(undefined, pokemonAction)).toEqual(mockPokemonToDispatch)
+  })
+
+  it('typesReducer should update state when action ', () => {
+    const mockTypesToDispatch = [ 'normal', 'fighting', 'flying' ]
+    const typesActions = {
+      type: 'ADD_TYPES',
+      typesToDispatch: mockTypesToDispatch
+    }
+    expect(typesReducer(undefined, typesActions)).toEqual(mockTypesToDispatch)
   })
 })
