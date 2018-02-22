@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: #fefaf3
+  background-color: #fefaf3;  
 }
 
 .card,
@@ -16,12 +16,22 @@
   overflow-y: scroll;
 }
 
+div.card {
+  font-size: 20px;
+}
+
 .active {
   border: 2px black solid;
   margin: 10px;
   height: 300px;
   width: 300px;  
   transition: height .25s ease;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.active h6 {
+  font-size: 16px;
 }
 
 .pokeCategory {
