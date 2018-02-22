@@ -4,9 +4,26 @@ import { connect } from 'react-redux';
 import { addTypes } from '../../actions';
 
 class TypesContainer extends Component {
+  constructor() {
+    super()
 
-  render() {
-    console.log(this.props)
+    this.state = {
+      types: []
+    }
+  }
+
+  async componentDidMount() {
+    const fetchedTypes = await fetch('http://localhost:3001/types');
+    const typesToDispatch = await fetchedTypes.json();
+    this.props.addTypes(typesToDispatch);
+    this.setState({ types: typesToDispatch })
+  }
+
+  render(props) {
+    const { storeTypes } = this.props
+    console.log('storetypes',storeTypes)
+      const renderCards = storeTypes.map( (type, key) => console.log(type ))
+    
     return (
       <div>
         <button onClick={()=> {
@@ -18,15 +35,15 @@ class TypesContainer extends Component {
 }
 
 TypesContainer.propTypes = {
-  addTypes: PropTypes.object
+  addTypes: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
-   types: state.types 
+export const mapStateToProps = (state) => ({
+   storeTypes: state.storeTypes 
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  addTypes: () => dispatch(addTypes())
+export const mapDispatchToProps = (dispatch) => ({
+  addTypes: (typesToDispatch) => dispatch(addTypes(typesToDispatch))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TypesContainer);
