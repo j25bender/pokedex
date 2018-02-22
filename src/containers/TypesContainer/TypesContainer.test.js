@@ -37,10 +37,26 @@ describe('TypesContainer Tests', () => {
   })
 
   it('addTypes should return correct object', () => {
-    expect(addTypes(typesReducerMock)).resolves.toEqual({"type": "ADD_TYPES", "typesToDispatch": [{"id": "1", "name": "normal", "pokemon": [undefined, undefined, undefined, undefined, undefined]}, {"id": "2", "name": "fighting", "pokemon": [undefined, undefined, undefined, undefined, undefined]}]})
+    expect(addTypes(typesReducerMock)).resolves.toEqual({"type": "ADD_TYPES", "typesToDispatch": typesReducerMock})
   })
 
   it('addPokemon should return correct object', () => {
-    expect(addPokemon(pokemonReducerMock)).resolves.toEqual({"pokemonToDispatch": [{"id": "92", "name": "gastly", "sprites": "img", "type": "8", "weight": 1}, {"id": "93", "name": "haunter", "sprites": "img", "type": "8", "weight": 1}], "type": "ADD_POKEMON"})
+    expect(addPokemon(pokemonReducerMock)).resolves.toEqual({"pokemonToDispatch": pokemonReducerMock, "type": "ADD_POKEMON"})
+  })
+
+  it('should match initital store', () => {
+    expect(store.getState()).toEqual({"storePokemon": pokemonReducerMock, "storeTypes": typesReducerMock})
+  })
+
+  it('MDTP should dispatch correct action object on dispatch', () => {
+    const dispatch = jest.fn();
+    mapDispatchToProps(dispatch).addTypes();
+    expect(dispatch.mock.calls).toEqual([[{"type": "ADD_TYPES", "typesToDispatch": undefined}]])
+  })
+
+  it('MDTP should dispatch correct action object on dispatch', () => {
+    const dispatch = jest.fn();
+    mapDispatchToProps(dispatch).addPokemon();
+    expect(dispatch.mock.calls).toEqual([[{"pokemonToDispatch": undefined, "type": "ADD_POKEMON"}]])
   })
 })
