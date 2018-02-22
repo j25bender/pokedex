@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
-import { fakeAction } from '../../actions';
+import { addTypes } from '../../actions';
 
 class TypesContainer extends Component {
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <button onClick={()=> {
-          this.props.fakeAction()
-          alert('FAKE')
-        }}> FAKE </button>
+          
+        }}> BUTTON </button>
       </div>
     );
   }
 }
 
 TypesContainer.propTypes = {
-  fake: shape({ fake: string }),
-  fakeAction: func.isRequired
+  addTypes: PropTypes.object
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
-const mapDispatchToProps = dispatch => ({ fakeAction:
-  () => dispatch(fakeAction())
+const mapStateToProps = (state) => ({
+   types: state.types 
 });
+
+const mapDispatchToProps = (dispatch) => ({
+  addTypes: () => dispatch(addTypes())
+});
+
 export default connect(mapStateToProps, mapDispatchToProps)(TypesContainer);
