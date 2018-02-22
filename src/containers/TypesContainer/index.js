@@ -38,11 +38,14 @@ class TypesContainer extends Component {
   render(props) {
     const { storeTypes } = this.props
     const { pokemonCategory } = this.state
-    const renderPokemon = pokemonCategory.map( (poke, key) => <div className="pokeCategory" key={ poke.id } ><h6>{ poke.name }</h6><h6></h6></div>)
-    const renderCards = storeTypes.map( (type, key) => <div id={ type.id } className="card" onClick={ (e) => this.handleClick(e) } key={ type.id } >{ type.name }</div>)
+    console.log(pokemonCategory)
+    const renderPokemon = pokemonCategory.map( (poke, key) => <div className="pokeCategory" key={ poke.id } ><h6>{ poke.name }</h6><h6>{ poke.type }</h6><h6>{ poke.weight }</h6><img src={ poke.sprites.front_default} /></div>)
+
+    const renderCards = storeTypes.map( (type, key) => <div id={ type.id } className="card" onClick={ (e) => this.handleClick(e) } key={ type.id } >{ type.name }<div>{ renderPokemon }</div></div>)
     
     return (
       <div className="types-container">
+        <div className="loadScreen"></div>
         {renderCards}
       </div>
     );
