@@ -12,7 +12,11 @@ describe('reducer tests', () => {
   })
 
   it('typesReducer should update state when action ', () => {
-    expect(typesReducer(undefined, {})).toEqual([])
+    const typesAction = {
+      type: 'ADD_TYPES',
+      typesToDispatch: [ 'normal', 'fighting', 'flying' ]
+    }
+    expect(typesReducer(undefined, typesAction)).toEqual([typesAction])
   })
 
   it('pokemonReducer should update state when action ', () => {
