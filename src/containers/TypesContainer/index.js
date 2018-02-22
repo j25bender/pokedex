@@ -4,7 +4,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { addTypes, addPokemon } from '../../actions';
 
-class TypesContainer extends Component {
+export class TypesContainer extends Component {
   constructor() {
     super()
 
