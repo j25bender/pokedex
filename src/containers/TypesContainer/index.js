@@ -20,7 +20,6 @@ class TypesContainer extends Component {
   }
 
   render(props) {
-    console.log(this.state)
     return (
       <div>
         <button onClick={()=> {
@@ -36,7 +35,7 @@ TypesContainer.propTypes = {
 };
 
 export const mapStateToProps = (state) => ({
-   types: state.types 
+   storeTypes: state.storeTypes 
 });
 
 export const mapDispatchToProps = (dispatch) => ({
